@@ -1,0 +1,111 @@
+$background: #212337;
+$foreground: #cddaf3;
+$active: #161a2a;
+$selected: rgba(113, 124, 180, 0.314);
+$selected-foreground: #ffffff;
+$primary: #82aaff;
+
+$active-window-color: white;
+$urgent-window-color: blue;
+$font-color: white;
+$menu-background-color: white;
+$menu-font-color: black;
+
+.taffy-window * {
+  all: unset;
+  font-family: sans-serif;
+  font-size: 14pt;
+  color: $selected-foreground;
+}
+
+.taffy-box {
+  background-color: $background;
+}
+
+.inner-pad {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.contents {
+  padding-bottom: 4px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 8px;
+  transition: background-color 0.5s;
+  border-radius: 5px;
+}
+
+/* Workspaces styling */
+
+.workspace-label {
+  padding-right: 3px;
+  padding-left: 2px;
+  margin-top: 4px;
+  font-size: 12pt;
+}
+
+.active .contents {
+  background-color: $active;
+}
+
+.visible .contents {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.auto-size-image,
+.sni-tray {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.window-icon {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.window-icon-container {
+  transition: opacity 0.5s, box-shadow 0.5s;
+  opacity: 1;
+  .active {
+    box-shadow: inset 0 -3px $selected;
+  }
+  .urgent {
+    box-shadow: inset 0 -3px $urgent-window-color;
+  }
+  .inactive .window-icon {
+    padding: 0px;
+  }
+  .minimized .window-icon {
+    opacity: 0.3;
+  }
+}
+
+/* Button styling */
+
+button {
+  background-color: transparent;
+  border-width: 0px;
+  border-radius: 0px;
+  &:checked,
+  &:hover .Contents:hover {
+    box-shadow: inset 0 -3px $primary;
+  }
+}
+
+.taffy-window {
+  menuitem {
+    * {
+      color: $foreground;
+    }
+    &:hover {
+      background-color: $selected;
+      label {
+        color: $selected-foreground;
+      }
+    }
+    background-color: $active;
+  }
+}
